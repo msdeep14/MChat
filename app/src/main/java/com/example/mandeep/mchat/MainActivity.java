@@ -83,8 +83,20 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /*
+    private void scrollMyListViewToBottom(ListView listOfMessages) {
+        listOfMessages.post(new Runnable() {
+            @Override
+            public void run() {
+                // Select the last row so it will scroll into view...
+                listOfMessages.setSelection(adapter.getCount() - 1);
+            }
+        });
+    }
+*/
+
     private void displayChatMessages() {
-        ListView listOfMessages = (ListView)findViewById(R.id.list_of_messages);
+        final ListView listOfMessages = (ListView)findViewById(R.id.list_of_messages);
 
         adapter = new FirebaseListAdapter<ChatMessage>(this, ChatMessage.class,
                 R.layout.message, FirebaseDatabase.getInstance().getReference()) {
@@ -106,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
         };
 
         listOfMessages.setAdapter(adapter);
+
+        //scrollMyListViewToBottom(listOfMessages);
     }
 
     @Override
@@ -132,6 +146,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
