@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "320872492487",
+    "firebase_url": "https://mchat-c5b0f.firebaseio.com",
+    "project_id": "mchat-c5b0f",
+    "storage_bucket": "mchat-c5b0f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320872492487:android:58c1063a1acc0033",
+        "android_client_info": {
+          "package_name": "com.example.mandeep.mchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320872492487-sjpifo1f4kc14p9l6k3frcusgt3edmqi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mandeep.mchat",
+            "certificate_hash": "20288a2eadc65a7f6544c6eb020e04857e6be1e3"
+          }
+        },
+        {
+          "client_id": "320872492487-9g83hff3g5m19cuqsi024n2o8bl0folb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM2V7AylO9Myc4YfD1riR_SOFQDNPgQcM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320872492487-9g83hff3g5m19cuqsi024n2o8bl0folb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
