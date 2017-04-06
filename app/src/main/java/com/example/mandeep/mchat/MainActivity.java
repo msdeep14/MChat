@@ -1,3 +1,9 @@
+/*
+* author - mandeep singh
+* copyright 2017 All rights reserved
+*
+* */
+
 package com.example.mandeep.mchat;
 
 import android.content.Context;
@@ -21,7 +27,13 @@ import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,6 +61,49 @@ public class MainActivity extends AppCompatActivity {
                             .getDisplayName(),
                     Toast.LENGTH_LONG)
                     .show();
+
+            //load notifications
+            String chatID = "chat_001";
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            String UID = currentUser.getUid();
+            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+            Query query = rootRef.child("message_read_states").child(chatID).orderByChild(UID).equalTo(false);
+            query.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    String messageID = dataSnapshot.getKey();
+                    //TODO: Handle Notification here, using the messageID
+                    // A datasnapshot received here will be a new message that the user has not read
+                    // If you want to display data about the message or chat,
+                    // Use the chatID and/or messageID and declare a new
+                    // SingleValueEventListener here, and add it to the chat/message DatabaseReference.
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                    String messageID = dataSnapshot.getKey();
+                    //TODO: Remove the notification
+                    // If the user reads the message in the app, before checking the notification
+                    // then the notification is no longer relevant, remove it here.
+                    // In onChildAdded you could use the messageID(s) to keep track of the notifications
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
 
             // Load chat room contents
             displayChatMessages();
